@@ -1,10 +1,7 @@
-FROM gliderlabs/registrator:v7
+FROM gliderlabs/registrator:master
 MAINTAINER Ryan Schlesinger <ryan@outstand.com>
 
-# Alpine 3.2 doesn't have --no-cache
-RUN apk update && \
-      apk add bash && \
-      rm -rf /var/cache/apk/*
+RUN apk add --no-cache bash
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
